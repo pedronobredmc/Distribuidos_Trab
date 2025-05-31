@@ -13,14 +13,12 @@ public class VeiculoOutputStream extends OutputStream {
     public VeiculoOutputStream(MeioDeTransporte[] veiculos, int quantidade, OutputStream destino) throws IOException {
         this.destino = destino;
 
-        // Escreve o número de objetos
         destino.write(intToBytes(quantidade));
 
         for (int i = 0; i < quantidade; i++) {
             String json = mapper.writeValueAsString(veiculos[i]);
             byte[] dados = json.getBytes();
 
-            // Escreve o tamanho do JSON e o JSON em si
             destino.write(intToBytes(dados.length));
             destino.write(dados);
         }
