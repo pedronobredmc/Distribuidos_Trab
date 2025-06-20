@@ -12,7 +12,7 @@ public class ServidorRMI {
             LocateRegistry.createRegistry(1099);
             ServicoRMI servico = new ServicoRMIImpl();
             Naming.rebind("ServicoRMI", servico);
-            System.out.println("🚗 Servidor RMI da Locadora iniciado.");
+            System.out.println("Servidor RMI da Locadora iniciado.");
         } catch (Exception e) {
             e.printStackTrace();
         }

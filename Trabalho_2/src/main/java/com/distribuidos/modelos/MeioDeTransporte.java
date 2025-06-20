@@ -1,16 +1,16 @@
 package com.distribuidos.modelos;
 
 public class MeioDeTransporte {
-    private String Placa;
+    private String placa;
     private String modelo;
     private int ano;
     private Boolean disponivel = true;
     
     public String getPlaca() {
-        return Placa;
+        return placa;
     }
     public void setPlaca(String placa) {
-        Placa = placa;
+        this.placa = placa;
     }
     public String getModelo() {
         return modelo;
@@ -31,10 +31,11 @@ public class MeioDeTransporte {
         this.disponivel = disponivel;
     }
     public MeioDeTransporte(String placa, String modelo, int ano) {
-        Placa = placa;
+        this.placa = placa.trim().toUpperCase();
         this.modelo = modelo;
         this.ano = ano;
     }
+
     public MeioDeTransporte() {
         // Necessário para Jackson / herança funcionar
     }

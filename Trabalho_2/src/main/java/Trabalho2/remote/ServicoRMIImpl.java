@@ -34,24 +34,24 @@ public byte[] doOperation(String objectReference, String methodId, byte[] argume
             case "2": { // listar veículos
                 StringBuilder lista = new StringBuilder();
                 for (MeioDeTransporte veiculo : veiculos) {
-                    lista.append(veiculo.getModelo()).append(" - ").append(veiculo.getPlaca()).append("\n");
+                    lista.append(veiculo.getModelo()).append(" - ").append(veiculo.getPlaca()).append(" - ").append(veiculo.getAno()).append("\n");
                 }
                 return serializarResultado("[Servidor] Lista de veículos disponíveis: \n" + lista.toString());
             }
 
             case "3": { // realizar aluguel
-                String placa = ois.readUTF();
+                String placa = ois.readUTF().trim().toUpperCase();
                 int dias = ois.readInt();
                 boolean veiculoEncontrado = false;
 
-                // Verifica se o veículo está na lista de veículos e se não está na lista de alugueis
                 for (MeioDeTransporte veiculo : veiculos) {
-                    if (veiculo.getPlaca().equals(placa)) {
+                    String placaRegistrada = veiculo.getPlaca().trim().toUpperCase();
+
+                    if (placaRegistrada.equals(placa)) {
                         veiculoEncontrado = true;
                         if (!alugueisAtivos.contains(placa)) {
-                            alugueisAtivos.add(placa); // Marca o veículo como alugado
-                            String resultado = "[Servidor] Veículo " + placa + " alugado por " + dias + " dias.";
-                            return serializarResultado(resultado);
+                            alugueisAtivos.add(placa);
+                            return serializarResultado("[Servidor] Veículo " + veiculo.getModelo() + " alugado por " + dias + " dias.");
                         } else {
                             return serializarResultado("[Servidor] Veículo " + placa + " já está alugado.");
                         }
@@ -63,6 +63,7 @@ public byte[] doOperation(String objectReference, String methodId, byte[] argume
                 }
                 break;
             }
+
 
             case "4": { // remover veículo
                 String placa = ois.readUTF();

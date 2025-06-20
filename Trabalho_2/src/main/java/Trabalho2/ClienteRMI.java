@@ -29,9 +29,9 @@ public class ClienteRMI {
 
                 switch (opcao) {
                     case 1:
-                        System.out.print("Modelo: ");
-                        oos.writeUTF(scanner.nextLine());
                         System.out.print("Placa: ");
+                        oos.writeUTF(scanner.nextLine());
+                        System.out.print("Modelo: ");
                         oos.writeUTF(scanner.nextLine());
                         System.out.print("Ano: ");
                         oos.writeInt(Integer.parseInt(scanner.nextLine()));
@@ -54,7 +54,7 @@ public class ClienteRMI {
                         break;
 
                     default:
-                        System.out.println("❌ Opção inválida.");
+                        System.out.println("Opção inválida.");
                         continue;
                 }
 
