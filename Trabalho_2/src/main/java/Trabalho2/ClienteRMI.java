@@ -38,7 +38,6 @@ public class ClienteRMI {
                         break;
 
                     case 2:
-                        // nenhum parâmetro
                         break;
 
                     case 3:
@@ -63,7 +62,7 @@ public class ClienteRMI {
                 byte[] resposta = servico.doOperation("LocadoraService", String.valueOf(opcao), argumentos);
                 ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(resposta));
                 String respostaFinal = (String) ois.readObject();
-                System.out.println("\nResposta do servidor: " + respostaFinal);
+                System.out.println("\n"+respostaFinal);
             }
         } catch (Exception e) {
             e.printStackTrace();
