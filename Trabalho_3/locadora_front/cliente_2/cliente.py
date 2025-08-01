@@ -77,15 +77,7 @@ def listar_alugueis():
 
 def menu():
     while True:
-        print(\"\"\"\n=== MENU CLIENTE PYTHON ===
-1 - Criar Cliente
-2 - Listar Clientes
-3 - Criar Veículo
-4 - Listar Veículos
-5 - Realizar Aluguel
-6 - Listar Aluguéis
-0 - Sair
-\"\"\")
+        print("=== MENU CLIENTE PYTHON === \n1 - Criar Cliente \n 2 - Listar Clientes \n 3 - Criar Veículo \n 4 - Listar Veículos \n 5 - Realizar Aluguel \n 6 - Listar Aluguéis \n 0 - Sair")
         op = input("Opção: ")
         if op == "1":
             criar_cliente()
@@ -104,6 +96,6 @@ def menu():
         else:
             print("Opção inválida!")
 
-if __name__ == \"__main__\":
+if __name__ == "__main__":
     menu()
 
